@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  liquibase:
+    build: .
+    container_name: my_liquibase
+    volumes:
+      - ./changelogs:/liquibase/changelogs
+      - ./liquibase.properties:/liquibase/liquibase.properties
+    entrypoint: ["liquibase", "--defaultsFile=/liquibase/liquibase.properties", "update"]
+   
